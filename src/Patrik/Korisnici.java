@@ -1,5 +1,3 @@
-package Patrik;
-
 import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JButton;
@@ -69,6 +67,7 @@ public class Korisnici {
             }
         });
         btnRegister.setBounds(109, 300, 136, 37);
+        btnRegister.setForeground(Color.WHITE); // Postavljanje boje teksta na bijelu
         frmCloudEstate.getContentPane().add(btnRegister);
 
         JTextPane txtpnCloudEstate = new JTextPane();
@@ -93,6 +92,7 @@ public class Korisnici {
             }
         });
         btnLoginUser.setBounds(109, 230, 136, 37);
+        btnLoginUser.setForeground(Color.WHITE); // Postavljanje boje teksta na bijelu
         frmCloudEstate.getContentPane().add(btnLoginUser);
 
         JTextPane txtpnUser = new JTextPane();
@@ -117,6 +117,7 @@ public class Korisnici {
             }
         });
         btnLoginAgency.setBounds(571, 230, 136, 37);
+        btnLoginAgency.setForeground(Color.WHITE); // Postavljanje boje teksta na bijelu
         frmCloudEstate.getContentPane().add(btnLoginAgency);
 
         JTextPane txtpnAgency = new JTextPane();
@@ -183,6 +184,7 @@ public class Korisnici {
             }
         });
         btnShowAgencies.setBounds(571, 300, 136, 37);
+        btnShowAgencies.setForeground(Color.WHITE); // Postavljanje boje teksta na bijelu
         frmCloudEstate.getContentPane().add(btnShowAgencies);
     }
 
@@ -197,101 +199,4 @@ public class Korisnici {
             String username = "pmocibob";
             String dbPassword = "11";
 
-            connection = DriverManager.getConnection(url, username, dbPassword);
-            String sql = "SELECT * FROM Korisnik WHERE Email_korisnika = ? AND Lozinka_korisnika = ?";
-            statement = connection.prepareStatement(sql);
-            statement.setString(1, email);
-            statement.setString(2, password);
-
-            resultSet = statement.executeQuery();
-
-            if (resultSet.next()) {
-                isValid = true;
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                if (resultSet != null) resultSet.close();
-                if (statement != null) statement.close();
-                if (connection != null) connection.close();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-
-        return isValid;
-    }
-
-    private boolean validateAgency(String code, String password) {
-        boolean isValid = false;
-        Connection connection = null;
-        PreparedStatement statement = null;
-        ResultSet resultSet = null;
-
-        try {
-            String url = "jdbc:mysql://ucka.veleri.hr/pmocibob";
-            String username = "pmocibob";
-            String dbPassword = "11";
-
-            connection = DriverManager.getConnection(url, username, dbPassword);
-            String sql = "SELECT * FROM Agencija WHERE Sifra_agencije = ? AND Lozinka_agencije = ?";
-            statement = connection.prepareStatement(sql);
-            statement.setString(1, code);
-            statement.setString(2, password);
-
-            resultSet = statement.executeQuery();
-
-            if (resultSet.next()) {
-                isValid = true;
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                if (resultSet != null) resultSet.close();
-                if (statement != null) statement.close();
-                if (connection != null) connection.close();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-
-        return isValid;
-    }
-
-    private ArrayList<String> getAgencies() {
-        ArrayList<String> agencies = new ArrayList<>();
-        Connection connection = null;
-        PreparedStatement statement = null;
-        ResultSet resultSet = null;
-
-        try {
-            String url = "jdbc:mysql://ucka.veleri.hr/pmocibob";
-            String username = "pmocibob";
-            String dbPassword = "11";
-
-            connection = DriverManager.getConnection(url, username, dbPassword);
-            String sql = "SELECT Naziv_agencije FROM Agencija";
-            statement = connection.prepareStatement(sql);
-
-            resultSet = statement.executeQuery();
-
-            while (resultSet.next()) {
-                agencies.add(resultSet.getString("Naziv_agencije"));
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                if (resultSet != null) resultSet.close();
-                if (statement != null) statement.close();
-                if (connection != null) connection.close();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-
-        return agencies;
-    }
-}
+            connection = DriverManager.getConnection(url, username
